@@ -50,7 +50,9 @@ const Login = (props) => {
         />
         <Button
           title="Register"
-          onPress={}
+          onPress={() => {
+            
+          }}
         />
       </Card>
     </View>
