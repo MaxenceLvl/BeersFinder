@@ -3,6 +3,7 @@ import { ActivityIndicator, View, Text } from "react-native";
 import { UserContext } from "./data/UserContext";
 
 import Login from "./screens/Login";
+import SearchBeer from "./screens/SearchBeers";
 import screensStyles from "./screens/Styles";
 
 export default function Root() {
@@ -24,5 +25,5 @@ export default function Root() {
       </View>
     );
 
-  return userid.length > 0 ? <View><Text>Test</Text></View> : <Login />;
+  return userid.length > 0 ? <SearchBeer /> : <Login />;
 }
