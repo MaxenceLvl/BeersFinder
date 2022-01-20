@@ -7,7 +7,7 @@ import Root from './src/Root';
 export default function App() {
   return (
     <UserProvider>
-      <Root/>
+      <Root />
       <StatusBar style="auto"/>
     </UserProvider>
   );

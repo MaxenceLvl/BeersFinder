@@ -6,10 +6,7 @@ const getData = async (url) => {
     const data = await response.json();
     return data;
   } catch (err) {
-    Alert.alert(
-      "Erreur lors de la récupération des données",
-      err.message
-    );
+    Alert.alert("Erreur lors de la récupération des données", err.message);
   }
 };
 
@@ -24,20 +21,29 @@ const sendData = async (url, data, method) => {
     return result;
   } catch (err) {
     console.log(err);
-    Alert.alert(
-      "Erreur lors de la mise à jour des données",
-      err.message
-    );
+    Alert.alert("Erreur lors de la mise à jour des données", err.message);
   }
 };
 
-export const createBeer = async (beerField, userId) => 
-    sendData(
-        `https://europe-west1-beersfinder-233e4.cloudfunctions.net/beers?id=${beerField.id}&userId=${userId}`,
-        beerField,
-        "POST"
-    );
+export const createBeer = async (beerField, userId) => {
+  sendData(
+    `https://europe-west1-beersfinder-233e4.cloudfunctions.net/beer?id=${beerField.id}&userId=${userId}`,
+    beerField,
+    "POST"
+  );
+};
 
+export const updateBeersUser = async (userId, beerField, beerId) => {
+  console.log("id", userId, beerId, beerField);
+  sendData(
+    `https://europe-west1-beersfinder-233e4.cloudfunctions.net/beer?id=${beerId}&userId=${userId}`,
+    beerField,
+    "PATCH"
+  );
+};
+
+export const getBeer = async () =>
+  getData(`https://europe-west1-beersfinder-233e4.cloudfunctions.net/beers`);
 
 export const getUser = async (userId) =>
   getData(

@@ -22,25 +22,23 @@ if (getApps().length === 0) {
 }
 
 export const signUp = async (login, password, firstName, lastName) =>
-    createUserWithEmailAndPassword(getAuth(), login, password).then( (res) => {
-        if (getAuth().currentUser) {
-            userId = getAuth().currentUser.uid;
-            if (userId) {
-                updateUser({
-                    firstName: firstName,
-                    lastName: lastName,
-                    id: login,
-                    avatar: "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png",
-                    beers: [],
-                })
-            }
-          }
-        }).catch(() => 
-          Alert.alert(
-            "Register failed",
-            "User already exist"
-          )
-        );
+  createUserWithEmailAndPassword(getAuth(), login, password)
+    .then((res) => {
+      if (getAuth().currentUser) {
+        userId = getAuth().currentUser.uid;
+        if (userId) {
+          updateUser({
+            firstName: firstName,
+            lastName: lastName,
+            id: login,
+            avatar:
+              "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png",
+            beers: [],
+          });
+        }
+      }
+    })
+    .catch(() => Alert.alert("Register failed", "User already exist"));
 
 export const signUserIn = async (login, password) =>
   signInWithEmailAndPassword(getAuth(), login, password).catch(() =>
