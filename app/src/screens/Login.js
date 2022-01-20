@@ -5,6 +5,11 @@ import Constants from "expo-constants";
 import Button from "../components/Button";
 import screensStyles from "./Styles";
 import { UserContext } from "../data/UserContext";
+import SignUp from "./SignUp";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { StackActions } from "@react-navigation/native";
+
+const LoginStack = createNativeStackNavigator();
 
 const loginStyles = StyleSheet.create({
   card: {
@@ -27,9 +32,11 @@ const Login = () => {
       ]}
     >
       <Card style={loginStyles.card}>
-        <Text style={screensStyles.title}>Bienvenue !</Text>
+        <Text style={screensStyles.title}>
+          Welcome Back!
+          </Text>
         <Text style={[screensStyles.title, screensStyles.margin]}>
-          Merci de vous authentifier
+          Please Login
         </Text>
         <TextInput
           placeholder="Login"
@@ -47,15 +54,20 @@ const Login = () => {
         />
         <Button
           title="Sign In"
+          style={inputStyle}
           onPress={() => {
             login(email, password);
           }}
         />
         <Button
           title="Register"
+          style={inputStyle}
           onPress={() => {
-            
-          }}
+          <LoginStack.Navigator>
+            <LoginStack.Screen
+            component={SignUp}
+            />
+          </LoginStack.Navigator>          }}
         />
       </Card>
     </View>
