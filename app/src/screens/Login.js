@@ -19,10 +19,11 @@ const loginStyles = StyleSheet.create({
 
 const inputStyle = [screensStyles.input, screensStyles.margin];
 
-const Login = (props) => {
+const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { login } = useContext(UserContext);
+
   return (
     <View
       style={[

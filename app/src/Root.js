@@ -4,6 +4,7 @@ import { UserContext } from "./data/UserContext";
 
 import Navigation from "./Navigation";
 import Login from "./screens/Login";
+import SearchBeer from "./screens/SearchBeers";
 import screensStyles from "./screens/Styles";
 
 export default function Root() {
