@@ -3,7 +3,7 @@ import { Text, TextInput, View, StyleSheet, Alert } from "react-native";
 import { Card } from "react-native-paper";
 import Constants from "expo-constants";
 import Button from "../components/Button";
-import screensStyles from "./ScreensStyles";
+import screensStyles from "./Styles";
 import { UserContext } from "../data/UserContext";
 
 const loginStyles = StyleSheet.create({
@@ -30,9 +30,9 @@ const SignUp = (props) => {
       ]}
     >
       <Card style={loginStyles.card}>
-        <Text style={screensStyles.title}>Welcome !</Text>
+        <Text style={screensStyles.title}>Welcome!</Text>
         <Text style={[screensStyles.title, screensStyles.margin]}>
-          Merci de vous authentifier
+          Please, put your informations to register.
         </Text>
         <TextInput
           placeholder="First Name"

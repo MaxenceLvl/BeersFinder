@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { ActivityIndicator, View, Text } from "react-native";
 import { UserContext } from "./data/UserContext";
 
+import Navigation from "./Navigation";
 import Login from "./screens/Login";
 import screensStyles from "./screens/Styles";
 
@@ -20,9 +21,9 @@ export default function Root() {
   if (loading)
     return (
       <View style={[screensStyles.container, screensStyles.center]}>
-        <ActivityIndicator color="#0000BB" />
+        <ActivityIndicator color="#FFA701" />
       </View>
     );
 
-  return userid.length > 0 ? <View><Text>Test</Text></View> : <Login />;
+  return userid.length > 0 ? <Navigation /> : <Login />;
 }

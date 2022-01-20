@@ -6,6 +6,10 @@ const screensStyles = StyleSheet.create({
     backgroundColor: "#ecf0f1",
     padding: 16,
   },
+  image: {
+    flex: 1,
+    justifyContent: "center",
+  },
   center: {
     display: "flex",
     alignItems: "center",

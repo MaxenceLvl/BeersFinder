@@ -3,7 +3,7 @@ import { TouchableHighlight, Text, StyleSheet } from "react-native";
 
 const buttonStyles = StyleSheet.create({
   container: {
-    backgroundColor: "#0000BB",
+    backgroundColor: "#FFA701",
     borderRadius: 8,
     padding: 8,
     display: "flex",
@@ -20,7 +20,7 @@ const buttonStyles = StyleSheet.create({
 const Button = (props) => (
   <TouchableHighlight
     onPress={props.onPress}
-    underlayColor="#000088"
+    underlayColor="#FFA701"
     style={[buttonStyles.container, props.style]}
   >
     <Text style={buttonStyles.title}>{props.title}</Text>
