@@ -19,11 +19,10 @@ const loginStyles = StyleSheet.create({
 
 const inputStyle = [screensStyles.input, screensStyles.margin];
 
-const Login = () => {
+const Login = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { login } = useContext(UserContext);
-
   return (
     <View
       style={[
@@ -32,9 +31,7 @@ const Login = () => {
       ]}
     >
       <Card style={loginStyles.card}>
-        <Text style={screensStyles.title}>
-          Welcome Back!
-          </Text>
+        <Text style={screensStyles.title}>Welcome Back!</Text>
         <Text style={[screensStyles.title, screensStyles.margin]}>
           Please Login
         </Text>
@@ -63,11 +60,8 @@ const Login = () => {
           title="Register"
           style={inputStyle}
           onPress={() => {
-          <LoginStack.Navigator>
-            <LoginStack.Screen
-            component={SignUp}
-            />
-          </LoginStack.Navigator>          }}
+            props.navigation.navigate("SignUp");
+          }}
         />
       </Card>
     </View>
