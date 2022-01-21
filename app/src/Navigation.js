@@ -6,9 +6,14 @@ import React from "react";
 import { ImageBackground, style } from "react-native";
 import Login from "./screens/Login";
 import SignUp from "./screens/SignUp";
+import SearchBeers from "./screens/SearchBeers";
+import BeerDetails from "./components/BeerDetails";
+import CameraScan from "./components/CameraScan";
 
 const LoginStack = createNativeStackNavigator();
 const RootTab = createBottomTabNavigator();
+
+const BeerStack = createNativeStackNavigator();
 
 const Navigation = () => (
   <NavigationContainer>
@@ -18,7 +23,7 @@ const Navigation = () => (
           let iconName;
 
           if (route.name === "Profile") {
-            iconName = focused ? "home-sharp" : "home-outline";
+            iconName = focused ? "beer" : "beer-outline";
           } else if (route.name === "Search") {
             iconName = focused ? "search" : "search-outline";
           } else if (route.name === "Scan") {
@@ -36,7 +41,7 @@ const Navigation = () => (
         name="Profile"
         options={{
           headerShown: false,
-          title: "Home",
+          title: "Profile",
           tabBarHideOnKeyboard: true,
         }}
       >
@@ -51,18 +56,22 @@ const Navigation = () => (
               }}
               component={Login}
             />
+            <LoginStack.Screen name="SignUp" component={SignUp} />
           </LoginStack.Navigator>
         )}
       </RootTab.Screen>
-      <RootTab.Screen
-        name="Search"
-        options={{ title: "Search" }}
-        component={SignUp}
-      />
+      <RootTab.Screen name="Search" options={{ title: "Search" }}>
+        {() => (
+          <BeerStack.Navigator screenOptions={{ headerShown: false }}>
+            <BeerStack.Screen name="SearchBeer" component={SearchBeers} />
+            <BeerStack.Screen name="BeerDetails" component={BeerDetails} />
+          </BeerStack.Navigator>
+        )}
+      </RootTab.Screen>
       <RootTab.Screen
         name="Scan"
         options={{ title: "ScanSearch" }}
-        component={SignUp}
+        component={CameraScan}
       />
     </RootTab.Navigator>
   </NavigationContainer>

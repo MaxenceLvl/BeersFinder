@@ -10,9 +10,6 @@ import {
 import screensStyles from "./Styles";
 import { getBeers } from "../data/apiBeer";
 import BeerCard from "../components/BeerCard";
-import BeerDetails from "../components/BeerDetails";
-import { UserContext } from "../data/UserContext";
-import { ActivityIndicator } from "react-native-paper";
 
 const test = {
   slugs: ["de-brabandere-wittekerke"],
@@ -102,9 +99,9 @@ const test = {
 };
 
 const SearchBeer = (props) => {
-  // const [beer, setBeer] = useState(null);
+  const [beer, setBeer] = useState(null);
   const [search, setSearch] = useState("");
-  const { isLoading } = useContext(UserContext);
+  //const { isLoading } = useContext(UserContext);
 
   // useEffect(() => {
   //     effect
@@ -118,31 +115,34 @@ const SearchBeer = (props) => {
       style={{ flex: 1, paddingTop: 24, backgroundColor: "#ecf0f1" }}
     >
       <View style={screensStyles.containerDetail}>
-        {/* <TextInput
-                    value={search}
-                    onChangeText={(txt) => {
-                        setSearch(txt)
-                        getBeers(txt).then((data) => setBeer(data))
-                    }}
-                    placeholder="Find a beer ..."
-                /> */}
-        {isLoading ? (
+        <TextInput
+          value={search}
+          onChangeText={(txt) => {
+            setSearch(txt);
+            getBeers(txt).then((data) => setBeer(data));
+          }}
+          placeholder="Find a beer ..."
+        />
+        {/* {isLoading ? (
           <ActivityIndicator color="blue" size={32} />
         ) : (
           <BeerDetails beer={test} />
-        )}
+        )} */}
 
-        {/* <ScrollView>
-                    { beer != null ?  beer.map( b => ( 
-                        
-                            <BeerCard 
-                                beer = {b}
-                                onPress = {<BeerDetails beer = {b} />}
-                            />
-                        
-                        )
-                    ) : undefined }
-                </ScrollView> */}
+        <ScrollView>
+          {beer != null ? (
+            beer.map((b) => (
+              <BeerCard
+                beer={b}
+                onPress={() => {
+                  props.navigation.navigate("BeerDetails", { beer: b });
+                }}
+              />
+            ))
+          ) : (
+            <Text>Faites une recherche</Text>
+          )}
+        </ScrollView>
       </View>
     </KeyboardAvoidingView>
   );

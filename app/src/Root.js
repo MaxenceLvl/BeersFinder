@@ -4,12 +4,13 @@ import { UserContext } from "./data/UserContext";
 
 import Navigation from "./Navigation";
 import Login from "./screens/Login";
-import SearchBeer from "./screens/SearchBeers";
 import screensStyles from "./screens/Styles";
 
 export default function Root() {
   const [loading, setLoading] = useState(true);
   const { checkUser, userid } = useContext(UserContext);
+
+  const image = { uri: "https://reactjs.org/logo-og.png" };
 
   useEffect(() => {
     const launch = async () => {

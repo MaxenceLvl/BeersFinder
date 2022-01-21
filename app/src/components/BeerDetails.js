@@ -16,11 +16,8 @@ const BeerDetails = (props) => {
   }
 
   const [userBeerIds, setUserBeerIds] = useState(beerIds);
-
-  console.log(userBeerIds);
-
-  const beer = props.beer;
-  const brewery = props.beer.brewery;
+  const beer = props.route.params.beer;
+  const brewery = props.route.params.beer.brewery;
 
   const breweryImages = brewery.galleryImages;
   const breweryGallery = [];
@@ -29,11 +26,12 @@ const BeerDetails = (props) => {
   let re =
     /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*\/)/;
   var regex = new RegExp(re);
-  const url = brewery.profile_image;
-  const urlBrewery = url.match(regex)[0];
-
-  for (let step = 0; step < breweryImages.length; step++) {
-    breweryGallery.push(`${urlBrewery}${breweryImages[step]}.png`);
+  if (brewery.profile_image != null) {
+    const url = brewery.profile_image;
+    const urlBrewery = url.match(regex)[0];
+    for (let step = 0; step < breweryImages.length; step++) {
+      breweryGallery.push(`${urlBrewery}${breweryImages[step]}.png`);
+    }
   }
 
   const beerField = {
@@ -88,7 +86,7 @@ const BeerDetails = (props) => {
               marginLeft: 16,
             }}
           >
-            <Text style={screensStyles.breweryText}>{props.beer.name}</Text>
+            <Text style={screensStyles.breweryText}>{beer.name}</Text>
             <View
               style={{
                 flexDirection: "row",
@@ -101,7 +99,7 @@ const BeerDetails = (props) => {
                 style={{ width: 32, height: 32, marginRight: 10 }}
               />
               <View style={screensStyles.verticleLine} />
-              <Text style={{ marginLeft: 10 }}>{props.beer.brewery.name}</Text>
+              <Text style={{ marginLeft: 10 }}>{brewery.name}</Text>
             </View>
           </View>
           <View
@@ -113,11 +111,11 @@ const BeerDetails = (props) => {
               marginTop: 30,
             }}
           >
-            {props.beer.profile_image != null ? (
+            {beer.profile_image != null ? (
               <Image
                 style={screensStyles.imageDetails}
                 source={{
-                  uri: props.beer.profile_image,
+                  uri: beer.profile_image,
                 }}
                 resizeMode="contain"
               />
@@ -150,20 +148,18 @@ const BeerDetails = (props) => {
         <View style={{ flexDirection: "row" }}>
           <View style={{ flex: 1 }}>
             <Text style={screensStyles.label}>Alcool :</Text>
-            <Text style={screensStyles.text}>{props.beer.alcohol / 100}%</Text>
+            <Text style={screensStyles.text}>{beer.alcohol / 100}%</Text>
           </View>
           <View style={{ flex: 1 }}>
             <Text style={screensStyles.label}>Type :</Text>
-            <Text style={screensStyles.text}>{props.beer.typeFamily}</Text>
+            <Text style={screensStyles.text}>{beer.typeFamily}</Text>
           </View>
         </View>
         <View style={{ flexDirection: "row" }}>
           <View style={{ flex: 1 }}>
             <Text style={screensStyles.label}>Description :</Text>
-            {props.beer.int_description != "" ? (
-              <Text style={screensStyles.text}>
-                {props.beer.int_description}
-              </Text>
+            {beer.int_description != "" ? (
+              <Text style={screensStyles.text}>{beer.int_description}</Text>
             ) : (
               <Text style={screensStyles.text}>No description for this</Text>
             )}

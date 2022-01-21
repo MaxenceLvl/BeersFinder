@@ -14,7 +14,7 @@ const loginStyles = StyleSheet.create({
 
 const inputStyle = [screensStyles.input, screensStyles.margin];
 
-const SignUp = (props) => {
+const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -73,10 +73,7 @@ const SignUp = (props) => {
             if (password === confirmPassword) {
               register(email, password, firstName, lastName);
             } else {
-              Alert.alert(
-                "Password doesn't match",
-                "Check your password"
-              )
+              Alert.alert("Password doesn't match", "Check your password");
             }
           }}
         />
