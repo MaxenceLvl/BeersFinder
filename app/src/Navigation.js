@@ -50,7 +50,7 @@ const Navigation = () => {
         >
           {() => (
             <LoginStack.Navigator>
-              <LoginStack.Screen
+              {/* <LoginStack.Screen
                 name="Profile"
                 options={() => {
                   return {
@@ -58,7 +58,7 @@ const Navigation = () => {
                   };
                 }}
                 component={Profile}
-              />
+              /> */}
               <LoginStack.Screen
                 name="Login"
                 options={() => {
@@ -78,7 +78,7 @@ const Navigation = () => {
         >
           {() => (
             <BeerStack.Navigator>
-              <BeerStack.Screen name="" component={SearchBeers} />
+              <BeerStack.Screen name="Search Beer" component={SearchBeers} />
               <BeerStack.Screen name="BeerDetails" component={BeerDetails} />
             </BeerStack.Navigator>
           )}
