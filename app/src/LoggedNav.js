@@ -13,10 +13,9 @@ import Profile from "./screens/Profile";
 
 const LoginStack = createNativeStackNavigator();
 const RootTab = createBottomTabNavigator();
-
 const BeerStack = createNativeStackNavigator();
 
-const Navigation = () => {
+const LoggedNav = () => {
   return (
     <NavigationContainer>
       <RootTab.Navigator
@@ -58,16 +57,16 @@ const Navigation = () => {
                 }}
                 component={Profile}
               />
-              <LoginStack.Screen
-                name="Login"
-                options={() => {
-                  return {
-                    title: "Profil utilisateur",
-                  };
-                }}
-                component={Login}
-              />
-              <LoginStack.Screen name="SignUp" component={SignUp} />
+              {/* <LoginStack.Screen
+                  name="Login"
+                  options={() => {
+                    return {
+                      title: "Profil utilisateur",
+                    };
+                  }}
+                  component={Login}
+                />
+                <LoginStack.Screen name="SignUp" component={SignUp} /> */}
             </LoginStack.Navigator>
           )}
         </RootTab.Screen>
@@ -92,4 +91,4 @@ const Navigation = () => {
   );
 };
 
-export default Navigation;
+export default LoggedNav;

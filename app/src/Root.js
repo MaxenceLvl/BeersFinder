@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { ActivityIndicator, View, Text } from "react-native";
 import { UserContext } from "./data/UserContext";
-
+import LoggedNav from "./LoggedNav";
 import Navigation from "./Navigation";
 import Login from "./screens/Login";
 import screensStyles from "./screens/Styles";
@@ -27,5 +27,5 @@ export default function Root() {
       </View>
     );
 
-  return userid.length > 0 ? <Navigation /> : <Login />;
+  return userid.length > 0 ? <LoggedNav /> : <Navigation />;
 }

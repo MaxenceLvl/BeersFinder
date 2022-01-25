@@ -13,7 +13,7 @@ const screensStyles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#ecf0f1",
     padding: 4,
-    paddingTop: 8
+    paddingTop: 8,
   },
   center: {
     display: "flex",
@@ -53,10 +53,10 @@ const screensStyles = StyleSheet.create({
     // backgroundColor: "#000000",
   },
   label: {
-    fontWeight: "bold", 
-    fontSize: 20, 
-    color: "#A93226", 
-    marginBottom: 10, 
+    fontWeight: "bold",
+    fontSize: 20,
+    color: "#A93226",
+    marginBottom: 10,
     marginTop: 20,
   },
   text: {
@@ -67,18 +67,24 @@ const screensStyles = StyleSheet.create({
     flexWrap: "wrap",
     fontSize: 22,
     fontWeight: "bold",
-    textDecorationLine: 'underline'
+    textDecorationLine: "underline",
   },
   imageDetails: {
-    flex: 1, 
-    height: 150, 
-    width: 150, 
-    resizeMode: 'contain'
+    flex: 1,
+    height: 150,
+    width: 150,
+    resizeMode: "contain",
   },
   verticleLine: {
-    height: '100%',
+    height: "100%",
     width: 1,
-    backgroundColor: '#909090',
+    backgroundColor: "#909090",
+  },
+  greetings: {
+    fontSize: 18,
+    fontWeight: "bold",
+    marginVertical: 16,
+    textAlign: "center",
   },
 });
 
