@@ -1,5 +1,4 @@
 import { Ionicons } from "@expo/vector-icons";
-
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -14,10 +13,9 @@ import Profile from "./screens/Profile";
 
 const LoginStack = createNativeStackNavigator();
 const RootTab = createBottomTabNavigator();
-
 const BeerStack = createNativeStackNavigator();
 
-const Navigation = () => {
+const LoggedNav = () => {
   return (
     <NavigationContainer>
       <RootTab.Navigator
@@ -39,6 +37,7 @@ const Navigation = () => {
           tabBarActiveTintColor: "#FFA701",
           tabBarInactiveTintColor: "#000000",
         })}
+      >
         <RootTab.Screen
           name="Profile"
           options={{
@@ -58,16 +57,16 @@ const Navigation = () => {
                 }}
                 component={Profile}
               />
-              <LoginStack.Screen
-                name="Login"
-                options={() => {
-                  return {
-                    title: "",
-                  };
-                }}
-                component={Login}
-              />
-              <LoginStack.Screen name="SignUp" component={SignUp} />
+              {/* <LoginStack.Screen
+                  name="Login"
+                  options={() => {
+                    return {
+                      title: "Profil utilisateur",
+                    };
+                  }}
+                  component={Login}
+                />
+                <LoginStack.Screen name="SignUp" component={SignUp} /> */}
             </LoginStack.Navigator>
           )}
         </RootTab.Screen>
@@ -77,7 +76,7 @@ const Navigation = () => {
         >
           {() => (
             <BeerStack.Navigator>
-              <BeerStack.Screen name="" component={SearchBeers} />
+              <BeerStack.Screen name="Search a beer" component={SearchBeers} />
               <BeerStack.Screen name="BeerDetails" component={BeerDetails} />
             </BeerStack.Navigator>
           )}
@@ -92,4 +91,4 @@ const Navigation = () => {
   );
 };
 
-export default Navigation;
+export default LoggedNav;

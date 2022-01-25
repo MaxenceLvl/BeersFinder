@@ -86,6 +86,12 @@ const screensStyles = StyleSheet.create({
     width: 320,
     height: 480,
     resizeMode: "cover",
+},
+  greetings: {
+    fontSize: 18,
+    fontWeight: "bold",
+    marginVertical: 16,
+    textAlign: "center",
   },
 });
 
