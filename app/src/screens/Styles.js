@@ -11,9 +11,12 @@ const screensStyles = StyleSheet.create({
   },
   cardContainer: {
     flex: 1,
-    backgroundColor: "#ecf0f1",
+    borderRadius: 14,
+    backgroundColor: "#ffffff",
     padding: 4,
     paddingTop: 8,
+    paddingLeft: 23,
+    //backgroundImage: url("https://api.lorem.space/image/face?w=150&h=150"),
   },
   center: {
     display: "flex",
@@ -50,7 +53,6 @@ const screensStyles = StyleSheet.create({
     width: 200,
     height: 200,
     paddingLeft: 12,
-    // backgroundColor: "#000000",
   },
   label: {
     fontWeight: "bold",
@@ -80,6 +82,11 @@ const screensStyles = StyleSheet.create({
     width: 1,
     backgroundColor: "#909090",
   },
+  backgroundImage: {
+    width: 320,
+    height: 480,
+    resizeMode: "cover",
+},
   greetings: {
     fontSize: 18,
     fontWeight: "bold",
