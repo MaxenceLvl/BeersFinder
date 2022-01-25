@@ -11,9 +11,12 @@ const screensStyles = StyleSheet.create({
   },
   cardContainer: {
     flex: 1,
-    backgroundColor: "#ecf0f1",
+    borderRadius: 14,
+    backgroundColor: "#ffffff",
     padding: 4,
-    paddingTop: 8
+    paddingTop: 8,
+    paddingLeft: 23,
+    //backgroundImage: url("https://api.lorem.space/image/face?w=150&h=150"),
   },
   center: {
     display: "flex",
@@ -50,13 +53,12 @@ const screensStyles = StyleSheet.create({
     width: 200,
     height: 200,
     paddingLeft: 12,
-    // backgroundColor: "#000000",
   },
   label: {
-    fontWeight: "bold", 
-    fontSize: 20, 
-    color: "#A93226", 
-    marginBottom: 10, 
+    fontWeight: "bold",
+    fontSize: 20,
+    color: "#A93226",
+    marginBottom: 10,
     marginTop: 20,
   },
   text: {
@@ -67,18 +69,23 @@ const screensStyles = StyleSheet.create({
     flexWrap: "wrap",
     fontSize: 22,
     fontWeight: "bold",
-    textDecorationLine: 'underline'
+    textDecorationLine: "underline",
   },
   imageDetails: {
-    flex: 1, 
-    height: 150, 
-    width: 150, 
-    resizeMode: 'contain'
+    flex: 1,
+    height: 150,
+    width: 150,
+    resizeMode: "contain",
   },
   verticleLine: {
-    height: '100%',
+    height: "100%",
     width: 1,
-    backgroundColor: '#909090',
+    backgroundColor: "#909090",
+  },
+  backgroundImage: {
+    width: 320,
+    height: 480,
+    resizeMode: "cover",
   },
 });
 

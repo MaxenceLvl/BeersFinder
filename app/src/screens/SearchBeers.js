@@ -122,6 +122,11 @@ const SearchBeer = (props) => {
             getBeers(txt).then((data) => setBeer(data));
           }}
           placeholder="Find a beer ..."
+          style={{
+            paddingLeft: 20,
+            paddingTop: 10,
+            paddingBottom: 10,
+          }}
         />
         {/* {isLoading ? (
           <ActivityIndicator color="blue" size={32} />
@@ -140,7 +145,9 @@ const SearchBeer = (props) => {
               />
             ))
           ) : (
-            <Text>Faites une recherche</Text>
+            <Text style={{ paddingLeft: 18, paddingTop: 20 }}>
+              ↑ Tapez le nom de la bière que vous cherchez
+            </Text>
           )}
         </ScrollView>
       </View>

@@ -1,4 +1,5 @@
 import { Ionicons } from "@expo/vector-icons";
+
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -51,7 +52,7 @@ const Navigation = () => (
               name="Login"
               options={(props) => {
                 return {
-                  title: "Profil utilisateur",
+                  title: "",
                 };
               }}
               component={Login}
@@ -60,11 +61,25 @@ const Navigation = () => (
           </LoginStack.Navigator>
         )}
       </RootTab.Screen>
-      <RootTab.Screen name="Search" options={{ title: "Search" }}>
+      <RootTab.Screen
+        name="Search"
+        options={(props) => {
+          return { title: "Search" };
+        }}
+        screenOptions={{ headerShown: false }}
+      >
         {() => (
-          <BeerStack.Navigator screenOptions={{ headerShown: false }}>
-            <BeerStack.Screen name="SearchBeer" component={SearchBeers} />
-            <BeerStack.Screen name="BeerDetails" component={BeerDetails} />
+          <BeerStack.Navigator>
+            <BeerStack.Screen
+              name="SearchBeer"
+              options={{ title: "" }}
+              component={SearchBeers}
+            />
+            <BeerStack.Screen
+              name="BeerDetails"
+              options={{ title: "Beer details" }}
+              component={BeerDetails}
+            />
           </BeerStack.Navigator>
         )}
       </RootTab.Screen>
