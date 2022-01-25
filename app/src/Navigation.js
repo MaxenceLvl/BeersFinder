@@ -39,6 +39,7 @@ const Navigation = () => {
           tabBarActiveTintColor: "#FFA701",
           tabBarInactiveTintColor: "#000000",
         })}
+      >
         <RootTab.Screen
           name="Profile"
           options={{
