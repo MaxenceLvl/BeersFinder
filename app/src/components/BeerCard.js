@@ -14,36 +14,13 @@ const BeerCard = (props) => (
     key={props}
     onPress={props.onPress}
     underlayColor="#fac353"
-    style={{
-      paddingTop: 18,
-      paddingLeft: 18,
-      paddingRight: 18,
-      paddingBottom: 18,
-      borderRadius: 18,
-    }}
+    style={screensStyles.touchableHighlightView}
   >
     <Card style={screensStyles.cardContainer}>
       <View style={{ flexDirection: "row", paddingTop: 18 }}>
         <View style={{ flexDirection: "column", flex: 1 }}>
-          <Text
-            style={{
-              maxHeight: 250,
-              paddingLeft: 16,
-              flexWrap: "wrap",
-              fontWeight: "bold",
-              fontSize: 20,
-            }}
-          >
-            {props.beer.name}
-          </Text>
-          <Text
-            style={{
-              flexWrap: "wrap",
-              fontSize: 14,
-              paddingLeft: 16,
-              paddingTop: 16,
-            }}
-          >
+          <Text style={screensStyles.beerCard1}>{props.beer.name}</Text>
+          <Text style={screensStyles.beerTextCard}>
             {props.beer.brewery.name}
           </Text>
         </View>
@@ -57,32 +34,11 @@ const BeerCard = (props) => (
           />
         ) : (
           <View style={screensStyles.image}>
-            <Text
-              style={{
-                flex: 1,
-                fontWeight: "bold",
-                fontSize: 22,
-                textAlign: "center",
-                paddingTop: 50,
-              }}
-            >
-              Photo Unavailable
-            </Text>
+            <Text style={screensStyles.beerTextCard2}>Photo Unavailable</Text>
           </View>
         )}
       </View>
-      <Text
-        style={{
-          flex: 1,
-          maxHeight: 250,
-          flexWrap: "wrap",
-          fontWeight: "bold",
-          fontSize: 16,
-          color: "#53a9fa",
-          paddingBottom: 30,
-          paddingLeft: 16,
-        }}
-      >
+      <Text style={screensStyles.beerTextCard3}>
         {props.beer.alcohol / 100}%
       </Text>
     </Card>

@@ -8,11 +8,15 @@ import {
   Alert,
   Image,
   ActivityIndicator,
+  ImageBackground,
 } from "react-native";
 import { Card } from "react-native-paper";
 import Button from "../components/Button";
 import { UserContext } from "../data/UserContext";
 import screensStyles from "./Styles";
+import Constants from "expo-constants";
+
+const inputStyle = [screensStyles.input2, screensStyles.margin];
 
 const Profile = () => {
   const { user, logout, modifyUser } = useContext(UserContext);
@@ -42,71 +46,68 @@ const Profile = () => {
   if (user == null) {
     return (
       <View style={[screensStyles.container, screensStyles.center]}>
-        <ActivityIndicator color="#FFA701" />
+        <ImageBackground
+          source={require("../img/beer_background.png")}
+          style={[screensStyles.image]}
+        >
+          <ActivityIndicator color="#FFA701" />
+        </ImageBackground>
       </View>
     );
   }
 
   return (
-    <View style={screensStyles.container}>
-      <Card
-      // style={
-      //   isKeyboardOpen ? profileStyles.cardKeyboardOpen : profileStyles.card
-      // }
+    <View style={[screensStyles.containerDetail]}>
+      <ImageBackground
+        source={require("../img/beer_background.png")}
+        style={[screensStyles.image]}
       >
-        <View>
-          {editing ? (
-            <UploadButton />
-          ) : (
-            <View>
-              {user.avatar ? (
-                <Image source={{ uri: user.avatar }} />
-              ) : (
-                <Ionicons name="person" color="#FFFFFF" size={32} />
-              )}
-            </View>
-          )}
-          <View style={[screensStyles.center, { alignItems: "stretch" }]}>
+        <Card
+        // style={
+        //   isKeyboardOpen ? profileStyles.cardKeyboardOpen : profileStyles.card
+        // }
+        >
+          <View>
             {editing ? (
-              <TextInput
-                value={firstName}
-                onChangeText={setFirstName}
-                style={[
-                  screensStyles.input,
-                  { marginVertical: 16, width: 160 },
-                ]}
-              />
+              <UploadButton />
             ) : (
-              <Text style={[{ marginVertical: 26 }]}>
-                Bonjour {user.firstName} !
-              </Text>
+              <View>
+                {user.avatar ? (
+                  <Image source={{ uri: user.avatar }} />
+                ) : (
+                  <Ionicons name="person" color="#FFFFFF" size={32} />
+                )}
+              </View>
             )}
-          </View>
-          <View style={[{ alignItems: "stretch" }]}>
+            <View style={{ alignItems: "stretch" }}>
+              <Text style={[inputStyle]}>
+                Bonjour {user.firstName} {user.lastName} !
+              </Text>
+            </View>
+            {/* <View style={[{ alignItems: "stretch" }]}>
             {editing ? (
               <TextInput
                 value={lastName}
                 onChangeText={setLastName}
-                style={[{ marginVertical: 16, width: 160 }]}
+                style={[inputStyle]}
               />
             ) : (
-              <Text style={[{ marginVertical: 26 }]}>
-                Bonjour {user.lastName} !
-              </Text>
+              <Text style={[inputStyle]}>{user.lastName} !</Text>
             )}
+          </View> */}
+            <Button
+              title={editing ? "Valider" : "Editer mon profil"}
+              style={[screensStyles.button]}
+              onPress={editing ? validate : () => setEditing(true)}
+            />
+            <Button
+              title="Me déconnecter"
+              style={[screensStyles.button]}
+              onPress={logout}
+            />
           </View>
-          <Button
-            title={editing ? "Valider" : "Editer mon profil"}
-            style={[{ width: 160 }]}
-            onPress={editing ? validate : () => setEditing(true)}
-          />
-          <Button
-            title="Me déconnecter"
-            style={{ width: 160 }}
-            onPress={logout}
-          />
-        </View>
-      </Card>
+        </Card>
+      </ImageBackground>
     </View>
   );
 };

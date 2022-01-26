@@ -44,7 +44,6 @@ const Navigation = () => {
           name="Profile"
           options={{
             headerShown: false,
-            title: "Profile",
             tabBarHideOnKeyboard: true,
           }}
         >

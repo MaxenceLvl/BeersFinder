@@ -76,24 +76,10 @@ const BeerDetails = (props) => {
   return (
     <View style={{ flex: 1, width: "100%" }}>
       <View style={{ width: "100%", alignItems: "center", marginTop: 20 }}>
-        <Text style={screensStyles.title}>BeerDetails</Text>
         <View style={{ flexDirection: "row", backgroundColor: "#f6da7c" }}>
-          <View
-            style={{
-              flexDirection: "column",
-              flex: 1,
-              marginTop: 30,
-              marginLeft: 16,
-            }}
-          >
+          <View style={screensStyles.beerdetailsView}>
             <Text style={screensStyles.breweryText}>{beer.name}</Text>
-            <View
-              style={{
-                flexDirection: "row",
-                marginTop: 50,
-                alignItems: "center",
-              }}
-            >
+            <View style={screensStyles.beerDetailsView2}>
               <Flag
                 code={breweryCode}
                 style={{ width: 32, height: 32, marginRight: 10 }}
@@ -102,15 +88,7 @@ const BeerDetails = (props) => {
               <Text style={{ marginLeft: 10 }}>{brewery.name}</Text>
             </View>
           </View>
-          <View
-            style={{
-              height: 200,
-              width: "100%",
-              flex: 1,
-              marginBottom: 40,
-              marginTop: 30,
-            }}
-          >
+          <View style={screensStyles.beerDetailsView3}>
             {beer.profile_image != null ? (
               <Image
                 style={screensStyles.imageDetails}
@@ -121,15 +99,7 @@ const BeerDetails = (props) => {
               />
             ) : (
               <View style={screensStyles.image}>
-                <Text
-                  style={{
-                    flex: 1,
-                    fontWeight: "bold",
-                    fontSize: 22,
-                    textAlign: "center",
-                    paddingTop: 50,
-                  }}
-                >
+                <Text style={screensStyles.beerDetailsText}>
                   Photo Unavailable
                 </Text>
               </View>
@@ -137,14 +107,7 @@ const BeerDetails = (props) => {
           </View>
         </View>
       </View>
-      <View
-        style={{
-          width: "100%",
-          alignItems: "center",
-          paddingLeft: 16,
-          paddingRight: 16,
-        }}
-      >
+      <View style={screensStyles.beerDetailsView4}>
         <View style={{ flexDirection: "row" }}>
           <View style={{ flex: 1 }}>
             <Text style={screensStyles.label}>Alcool :</Text>
