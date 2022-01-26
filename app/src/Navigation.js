@@ -14,7 +14,7 @@ import Profile from "./screens/Profile";
 
 const LoginStack = createNativeStackNavigator();
 const RootTab = createBottomTabNavigator();
-
+const ScanStack = createNativeStackNavigator();
 const BeerStack = createNativeStackNavigator();
 
 const Navigation = () => {
@@ -83,11 +83,14 @@ const Navigation = () => {
             </BeerStack.Navigator>
           )}
         </RootTab.Screen>
-        <RootTab.Screen
-          name="Scan"
-          options={{ title: "ScanSearch" }}
-          component={CameraScan}
-        />
+        <RootTab.Screen name="Scan" options={{ title: "ScanSearch" }}>
+          {() => (
+            <ScanStack.Navigator>
+              <ScanStack.Screen name="" component={CameraScan} />
+              <ScanStack.Screen name="" component={BeerDetails} />
+            </ScanStack.Navigator>
+          )}
+        </RootTab.Screen>
       </RootTab.Navigator>
     </NavigationContainer>
   );

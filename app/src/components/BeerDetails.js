@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { View, Image, Text } from "react-native";
+import { View, Image, Text, Alert } from "react-native";
 import screensStyles from "../screens/Styles";
 import FavoriteButton from "./FavoriteButton";
 import { createBeer, updateBeersUser } from "../data/api";
@@ -9,20 +9,22 @@ import Flag from "react-native-round-flags";
 const BeerDetails = (props) => {
   const { userid, user } = useContext(UserContext);
 
-  const beerIds = [];
-  for (let index = 0; index < user.beers.length; index++) {
-    const element = user.beers[index]._path.segments[1];
-    beerIds.push(element);
-  }
-
-  const [userBeerIds, setUserBeerIds] = useState(beerIds);
   const beer = props.route.params.beer;
   const brewery = props.route.params.beer.brewery;
 
   const breweryImages = brewery.galleryImages;
   const breweryGallery = [];
+  const beerIds = [];
 
-  // REGEX pour chopper l'url pour les images
+  if (userid != null && user != null) {
+    for (let index = 0; index < user.beers.length; index++) {
+      const element = user.beers[index]._path.segments[1];
+      beerIds.push(element);
+    }
+  }
+
+  const [userBeerIds, setUserBeerIds] = useState(beerIds);
+  // REGEX to get URL fot the futur images
   let re =
     /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*\/)/;
   var regex = new RegExp(re);
@@ -72,6 +74,37 @@ const BeerDetails = (props) => {
       }
     }
   };
+
+  const UserNull = () => (
+    <FavoriteButton
+      title="Add to Favorite"
+      onPress={() => {
+        Alert.alert(
+          "You are not connected",
+          "You need to be connect to add this beer to your favorite"
+        );
+      }}
+    />
+  );
+
+  const UserNotNull = () =>
+    userBeerIds.includes(beer.id) ? (
+      <FavoriteButton
+        title="Remove from Favorite"
+        onPress={() => {
+          updateBeersUser(user.id, beerField, beer.id);
+          updateBeer();
+        }}
+      />
+    ) : (
+      <FavoriteButton
+        title="Add to Favorite"
+        onPress={() => {
+          createBeer(beerField, userid);
+          setUserBeerIds([...userBeerIds, beer.id]);
+        }}
+      />
+    );
 
   return (
     <View style={{ flex: 1, width: "100%" }}>
@@ -165,7 +198,8 @@ const BeerDetails = (props) => {
             )}
           </View>
         </View>
-        {userBeerIds.includes(beer.id) ? (
+        {user == null ? <UserNull /> : <UserNotNull />}
+        {/* {userBeerIds.includes(beer.id) ? (
           <FavoriteButton
             title="Remove from Favorite"
             onPress={() => {
@@ -181,7 +215,7 @@ const BeerDetails = (props) => {
               setUserBeerIds([...userBeerIds, beer.id]);
             }}
           />
-        )}
+        )} */}
       </View>
     </View>
   );
