@@ -62,11 +62,7 @@ const Profile = () => {
         source={require("../img/beer_background.png")}
         style={[screensStyles.image]}
       >
-        <Card
-        // style={
-        //   isKeyboardOpen ? profileStyles.cardKeyboardOpen : profileStyles.card
-        // }
-        >
+        <Card style={{ borderWidth: 2, borderRadius: 14 }}>
           <View>
             {editing ? (
               <UploadButton />

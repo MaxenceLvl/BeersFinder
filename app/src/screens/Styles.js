@@ -53,7 +53,6 @@ const screensStyles = StyleSheet.create({
   },
   image: {
     flex: 1,
-    borderRadius: 50,
     padding: 30,
     paddingTop: 100,
   },
@@ -69,7 +68,8 @@ const screensStyles = StyleSheet.create({
     fontWeight: "bold",
   },
   breweryText: {
-    flexWrap: "wrap",
+    //flexWrap: "wrap",
+    width: 200,
     fontSize: 22,
     fontWeight: "bold",
     textDecorationLine: "underline",
@@ -136,7 +136,6 @@ const screensStyles = StyleSheet.create({
     paddingLeft: 16,
   },
   beerDetailsView: {
-    flexDirection: "column",
     flex: 1,
     marginTop: 30,
     marginLeft: 16,
@@ -168,6 +167,33 @@ const screensStyles = StyleSheet.create({
   },
   loginStyleCard: {
     padding: 30,
+    borderWidth: 2,
+    borderRadius: 14,
+  },
+  background: {
+    position: "absolute",
+    borderRadius: 5,
+    left: 0,
+    right: 0,
+    top: 0,
+    height: 310,
+  },
+  beerCardView: {
+    flexDirection: "row",
+    borderWidth: 2,
+    borderColor: "brown",
+    borderRadius: 8,
+    paddingLeft: 20,
+    paddingRight: 20,
+    paddingTop: 20,
+    paddingBottom: 20,
+  },
+  beerCardView2: {
+    width: "100%",
+    alignItems: "center",
+    marginTop: 20,
+    paddingLeft: 20,
+    paddingRight: 20,
   },
 });
 

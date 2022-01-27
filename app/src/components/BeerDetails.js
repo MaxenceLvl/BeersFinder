@@ -1,10 +1,11 @@
 import React, { useContext, useState } from "react";
-import { View, Image, Text, Alert } from "react-native";
+import { ScrollView, View, Image, Text, Alert, StyleSheet } from "react-native";
 import screensStyles from "../screens/Styles";
 import FavoriteButton from "./FavoriteButton";
 import { createBeer, updateBeersUser } from "../data/api";
 import { UserContext } from "../data/UserContext";
 import Flag from "react-native-round-flags";
+import { LinearGradient } from "expo-linear-gradient";
 
 const BeerDetails = (props) => {
   const { userid, user } = useContext(UserContext);
@@ -105,64 +106,69 @@ const BeerDetails = (props) => {
         }}
       />
     );
-
   return (
-    <View style={{ flex: 1, width: "100%" }}>
-      <View style={{ width: "100%", alignItems: "center", marginTop: 20 }}>
-        <View style={{ flexDirection: "row", backgroundColor: "#f6da7c" }}>
-          <View style={screensStyles.beerdetailsView}>
-            <Text style={screensStyles.breweryText}>{beer.name}</Text>
-            <View style={screensStyles.beerDetailsView2}>
-              <Flag
-                code={breweryCode}
-                style={{ width: 32, height: 32, marginRight: 10 }}
-              />
-              <View style={screensStyles.verticleLine} />
-              <Text style={{ marginLeft: 10 }}>{brewery.name}</Text>
+    <ScrollView>
+      <View style={{ flex: 1, width: "100%" }}>
+        <View style={screensStyles.beerCardView2}>
+          <View style={screensStyles.beerCardView}>
+            <LinearGradient
+              // Background Linear Gradient
+              colors={["#fdfefe", "#f1c40f"]}
+              style={screensStyles.background}
+            />
+            <View style={screensStyles.beerdetailsView}>
+              <Text style={screensStyles.breweryText}>{beer.name}</Text>
+              <View style={screensStyles.beerDetailsView2}>
+                <Flag
+                  code={breweryCode}
+                  style={{ width: 32, height: 32, marginRight: 10 }}
+                />
+                <View style={screensStyles.verticleLine} />
+                <Text style={{ marginLeft: 10, flex: 1 }}>{brewery.name}</Text>
+              </View>
+            </View>
+            <View style={screensStyles.beerDetailsView3}>
+              {beer.profile_image != null ? (
+                <Image
+                  style={screensStyles.imageDetails}
+                  source={{
+                    uri: beer.profile_image,
+                  }}
+                  resizeMode="contain"
+                />
+              ) : (
+                <View style={screensStyles.image}>
+                  <Text style={screensStyles.beerDetailsText}>
+                    Photo Unavailable
+                  </Text>
+                </View>
+              )}
             </View>
           </View>
-          <View style={screensStyles.beerDetailsView3}>
-            {beer.profile_image != null ? (
-              <Image
-                style={screensStyles.imageDetails}
-                source={{
-                  uri: beer.profile_image,
-                }}
-                resizeMode="contain"
-              />
-            ) : (
-              <View style={screensStyles.image}>
-                <Text style={screensStyles.beerDetailsText}>
-                  Photo Unavailable
-                </Text>
-              </View>
-            )}
-          </View>
         </View>
-      </View>
-      <View style={screensStyles.beerDetailsView4}>
-        <View style={{ flexDirection: "row" }}>
-          <View style={{ flex: 1 }}>
-            <Text style={screensStyles.label}>Alcool :</Text>
-            <Text style={screensStyles.text}>{beer.alcohol / 100}%</Text>
+        <View style={screensStyles.beerDetailsView4}>
+          <View style={{ flexDirection: "row" }}>
+            <View style={{ flex: 1 }}>
+              <Text style={screensStyles.label}>Alcool :</Text>
+              <Text style={screensStyles.text}>{beer.alcohol / 100}%</Text>
+            </View>
+            <View style={{ flex: 1 }}>
+              <Text style={screensStyles.label}>Type :</Text>
+              <Text style={screensStyles.text}>{beer.typeFamily}</Text>
+            </View>
           </View>
-          <View style={{ flex: 1 }}>
-            <Text style={screensStyles.label}>Type :</Text>
-            <Text style={screensStyles.text}>{beer.typeFamily}</Text>
+          <View style={{ flexDirection: "row" }}>
+            <View style={{ flex: 1, paddingBottom: 30 }}>
+              <Text style={screensStyles.label}>Description :</Text>
+              {beer.int_description != "" ? (
+                <Text style={screensStyles.text}>{beer.int_description}</Text>
+              ) : (
+                <Text style={screensStyles.text}>No description for this</Text>
+              )}
+            </View>
           </View>
-        </View>
-        <View style={{ flexDirection: "row" }}>
-          <View style={{ flex: 1 }}>
-            <Text style={screensStyles.label}>Description :</Text>
-            {beer.int_description != "" ? (
-              <Text style={screensStyles.text}>{beer.int_description}</Text>
-            ) : (
-              <Text style={screensStyles.text}>No description for this</Text>
-            )}
-          </View>
-        </View>
-        {user == null ? <UserNull /> : <UserNotNull />}
-        {/* {userBeerIds.includes(beer.id) ? (
+          {user == null ? <UserNull /> : <UserNotNull />}
+          {/* {userBeerIds.includes(beer.id) ? (
           <FavoriteButton
             title="Remove from Favorite"
             onPress={() => {
@@ -179,8 +185,9 @@ const BeerDetails = (props) => {
             }}
           />
         )} */}
+        </View>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 
