@@ -82,11 +82,14 @@ const Navigation = () => {
             </BeerStack.Navigator>
           )}
         </RootTab.Screen>
-        <RootTab.Screen name="Scan" options={{ title: "ScanSearch" }}>
+        <RootTab.Screen
+          name="Scan"
+          options={{ title: "ScanSearch", headerShown: false }}
+        >
           {() => (
             <ScanStack.Navigator>
-              <ScanStack.Screen name="" component={CameraScan} />
-              <ScanStack.Screen name="" component={BeerDetails} />
+              <ScanStack.Screen name="ScanSearch" component={CameraScan} />
+              <ScanStack.Screen name="BeerDetails" component={BeerDetails} />
             </ScanStack.Navigator>
           )}
         </RootTab.Screen>
