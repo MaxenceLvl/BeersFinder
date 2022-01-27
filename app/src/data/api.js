@@ -1,3 +1,4 @@
+import { async } from "@firebase/util";
 import { Alert } from "react-native";
 
 const getData = async (url) => {
@@ -39,6 +40,12 @@ export const updateBeersUser = async (userId, beerField, beerId) => {
     `https://europe-west1-beersfinder-233e4.cloudfunctions.net/beer?id=${beerId}&userId=${userId}`,
     beerField,
     "PATCH"
+  );
+};
+
+export const getBeerBy = async (beerId) => {
+  getData(
+    `https://europe-west1-beersfinder-233e4.cloudfunctions.net/beer?id=${beerId}`
   );
 };
 

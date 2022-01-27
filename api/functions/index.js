@@ -33,6 +33,19 @@ exports.beer = functions
     const userId = request.query.userId;
 
     switch (request.method) {
+      case "GET":
+        beersCollection
+          .doc(beerId)
+          .get()
+          .then((doc) => {
+            if (!doc.exists) {
+              response.status(404).send("Beer not found");
+            } else {
+              response.send(doc.data());
+            }
+          });
+
+        break;
       case "POST":
         beersCollection
           .doc(beerId)
