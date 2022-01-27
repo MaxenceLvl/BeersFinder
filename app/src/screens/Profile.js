@@ -91,17 +91,16 @@ const Profile = () => {
         >
           <Card style={{ borderWidth: 2, borderRadius: 14 }}>
             <View>
-              {editing ? (
-                <UploadButton />
-              ) : (
-                <View>
-                  {user.avatar ? (
-                    <Image source={{ uri: user.avatar }} />
-                  ) : (
-                    <Ionicons name="person" color="#FFFFFF" size={32} />
-                  )}
-                </View>
-              )}
+              <View>
+                {user.avatar ? (
+                  <Image
+                    source={{ uri: user.avatar }}
+                    style={screensStyles.avatar}
+                  />
+                ) : (
+                  <Ionicons name="person" color="#FFFFFF" size={32} />
+                )}
+              </View>
               <View style={{ alignItems: "stretch" }}>
                 <Text style={[inputStyle]}>
                   Bonjour {user.firstName} {user.lastName} !

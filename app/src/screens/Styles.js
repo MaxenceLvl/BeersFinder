@@ -56,6 +56,14 @@ const screensStyles = StyleSheet.create({
     padding: 30,
     paddingTop: 100,
   },
+  avatar: {
+    flex: 1,
+    marginLeft: 110,
+    marginTop: 15,
+    paddingTop: 100,
+    height: 100,
+    width: 100,
+  },
   label: {
     fontWeight: "bold",
     fontSize: 20,
